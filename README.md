@@ -1,4 +1,4 @@
-# Photo-viewer
+# Image-viewer
 
 **SImple Photo viewer GUI(Graphical User Interface) using Tkinter(Python).**
 - Images are already available in **SHIRVEL** folder.
