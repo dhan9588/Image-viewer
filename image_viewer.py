@@ -16,6 +16,8 @@ my_img6 = ImageTk.PhotoImage(Image.open("SHIRVEL/6.jpg"))
 my_img7 = ImageTk.PhotoImage(Image.open("SHIRVEL/7.jpg"))
 
 img_list = [my_img1,my_img2,my_img3,my_img4,my_img5,my_img6,my_img7]
+#Adding Status Bar
+status = Label(root,text="Image 1 of "+str(len(img_list)),bd=1,relief=SUNKEN,anchor=E)
 
 my_label = Label(image=my_img1)
 my_label.grid(row=0,column=0,columnspan=3)
@@ -36,6 +38,10 @@ def next(image_number):
     my_label.grid(row=0, column=0, columnspan=3)
     button_next.grid(row=1, column=2)
     button_prev.grid(row=1, column=0)
+    
+    #Update Status Bar
+    status = Label(root, text="Image "+str(image_number)+" of " + str(len(img_list)), bd=1, relief=SUNKEN, anchor=E)
+    status.grid(row=2, column=0, columnspan=3, sticky=W + E)
 
 
 
@@ -55,13 +61,18 @@ def prev(image_number):
     my_label.grid(row=0, column=0, columnspan=3)
     button_next.grid(row=1, column=2)
     button_prev.grid(row=1, column=0)
+    
+    #Update Status Bar
+    status = Label(root, text="Image "+str(image_number)+" of " + str(len(img_list)), bd=1, relief=SUNKEN, anchor=E)
+    status.grid(row=2, column=0, columnspan=3, sticky=W + E)
 
 button_next = Button(root,text=">>",width=5,borderwidth=5,command=lambda:next(2))
 button_prev = Button(root,text="<<",width=5,borderwidth=5,command=prev,state=DISABLED)
 button_quit = Button(root,text="EXIT",command=root.quit,width=5,borderwidth=5)
 
-button_next.grid(row=1,column=2)
+button_next.grid(row=1,column=2,pady=10)
 button_prev.grid(row=1,column=0)
 button_quit.grid(row=1,column=1)
+status.grid(row=2,column=0,columnspan=3,sticky=W+E)
 
 root.mainloop()
